@@ -1,6 +1,8 @@
 let hash = location.hash.substring(1);
 
 const headerCityButton = document.querySelector('.header__city-button');
+const navigationList = document.querySelector('.navigation__list');
+const goodsTitle = document.querySelector('.goods__title');
 
 headerCityButton.textContent = localStorage.getItem('lomoda-location') || 'Ваш город?'
 
@@ -132,12 +134,18 @@ try {
     };
 
     window.addEventListener('hashchange', () => {
-        const navigationList = document.querySelector('.navigation__list');
-        const goodsTitle = document.querySelector('.goods__title');
-
         hash = location.hash.substring(1);
         geetGoods(renderGoodsList, hash);
 
+        for (let i = 0; i < navigationList.getElementsByClassName('navigation__link').length; i++)  {
+            if (navigationList.getElementsByClassName('navigation__link')[i].hash.substring(1) === hash) {
+                goodsTitle.innerHTML = navigationList.getElementsByClassName('navigation__link')[i].innerHTML;
+            }
+        }
+    });
+
+    window.addEventListener('load', () => {
+        hash = location.hash.substring(1);
         for (let i = 0; i < navigationList.getElementsByClassName('navigation__link').length; i++)  {
             if (navigationList.getElementsByClassName('navigation__link')[i].hash.substring(1) === hash) {
                 goodsTitle.innerHTML = navigationList.getElementsByClassName('navigation__link')[i].innerHTML;
