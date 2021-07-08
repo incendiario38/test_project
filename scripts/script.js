@@ -132,15 +132,17 @@ try {
     };
 
     window.addEventListener('hashchange', () => {
-        const navigationLink = document.querySelector('.navigation__link');
+        const navigationList = document.querySelector('.navigation__list');
         const goodsTitle = document.querySelector('.goods__title');
-
-        navigationLink.addEventListener('click', () => {
-            goodsTitle.setAttribute('value', navigationLink.getAttribute('value'));
-        });
 
         hash = location.hash.substring(1);
         geetGoods(renderGoodsList, hash);
+
+        for (let i = 0; i < navigationList.getElementsByClassName('navigation__link').length; i++)  {
+            if (navigationList.getElementsByClassName('navigation__link')[i].hash.substring(1) === hash) {
+                goodsTitle.innerHTML = navigationList.getElementsByClassName('navigation__link')[i].innerHTML;
+            }
+        }
     });
 
     geetGoods(renderGoodsList, hash);
