@@ -1,1 +1,1 @@
-test_project
+Проект выполняемый по интенсиву "GLO Academy"

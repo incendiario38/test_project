@@ -145,7 +145,6 @@ try {
     });
 
     window.addEventListener('load', () => {
-        hash = location.hash.substring(1);
         for (let i = 0; i < navigationList.getElementsByClassName('navigation__link').length; i++)  {
             if (navigationList.getElementsByClassName('navigation__link')[i].hash.substring(1) === hash) {
                 goodsTitle.innerHTML = navigationList.getElementsByClassName('navigation__link')[i].innerHTML;
